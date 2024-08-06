@@ -1,11 +1,11 @@
 from packaging.version import parse
 
-def compare_packages(p10_data: dict, sisyphus_data) -> dict:
-    p10_packages = {pkg['name']: pkg for pkg in p10_data['packages']}
-    sisyphus_packages = {pkg['name']: pkg for pkg in sisyphus_data['packages']}
+def compare_packages(first_branch_data, second_branch_data):
+    packages_from_first_branch = {pkg['name']: pkg for pkg in first_branch_data['packages']}
+    packages_from_second_branch = {pkg['name']: pkg for pkg in second_branch_data['packages']}
 
-    in_p10_not_sisyphus = set(p10_packages) - set(sisyphus_packages)
-    in_sisyphus_not_p10 = set(sisyphus_packages) - set(p10_packages)
+    in_p10_not_sisyphus = set(packages_from_first_branch) - set(packages_from_second_branch)
+    in_sisyphus_not_p10 = set(packages_from_second_branch) - set(packages_from_first_branch)
 
     results_by_arch = {
         arch: {
