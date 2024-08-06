@@ -3,7 +3,7 @@ import json
 from .api import fetch_packages
 from .compare import compare_packages
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Получение и сравнение данных пакета из двух бранчей.")
     parser.add_argument('--branch1', type=str, default="p10", help='Первая ветка')
     parser.add_argument('--branch2', type=str, default="sisyphus", help='Вторая ветка')
