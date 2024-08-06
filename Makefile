@@ -9,3 +9,6 @@ commit:
 
 push: add commit
 	git push
+
+clean:
+	rm -rf build package_comparator.egg-info *.json

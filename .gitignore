@@ -1,0 +1,9 @@
+venv/
+.env/
+.venv/
+
+*.json
+
+build/
+
+package_comparator.egg-info/
