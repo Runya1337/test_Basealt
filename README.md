@@ -1,29 +1,29 @@
 # Package Comparator
 
-Package Comparator — это инструмент командной строки для сравнения пакетов между двумя ветками репозитория ALT Linux.
+Package Comparator is a command-line tool for comparing packages between two branches of the ALT Linux repository.
 
-## Особенности
+## Features
 
-- Сравнение пакетов по версиям между ветками.
-- Вывод различий в пакетах по архитектуре.
-- Возможность использовать на любой платформе, где работает Python.
+- Compare packages by versions between branches.
+- Display differences in packages by architecture.
+- Usable on any platform where Python is available.
 
-## Предварительные требования
+## Prerequisites
 
-Убедитесь, что у вас установлен Python 3.6 или выше. Вы также нуждаетесь в следующих библиотеках:
-- `requests` для запросов к API.
-- `pydantic` для валидации данных и создания моделей.
+Ensure you have Python 3.6 or higher installed. You will also need the following libraries:
+- `requests` for API requests.
+- `pydantic` for data validation and model creation.
 
-## Установка
+## Installation
 
-Клонируйте репозиторий:
+Clone the repository:
 
 ```bash
 git clone git@github.com:Runya1337/test_Basealt.git
 cd test_Basealt
 ```
 
-Установите проект с использованием::
+Install the project using:
 
 ```bash
 python3 -m venv venv
@@ -31,21 +31,21 @@ source venv/bin/activate
 pip install -e .
 ```
 
-Использование:
+Usage
 
 ```bash
 compare-packages --branch1 p10 --branch2 sisyphus
 ```
 
-Возможные параметры команды:
+Possible command parameters:
 
 - --branch1 - первая ветка для сравнения (по умолчанию p10).
 - --branch2 - вторая ветка для сравнения (по умолчанию sisyphus).
 
-## Вывод результатов
+## Output Results
 
-Результаты сравнения будут сохранены в файл comparison_results.json в текущем каталоге.
+The comparison results will be saved in a file named comparison_results.json in the current directory.
 
-## КОНТАКТЫ
+## CONTACTS
 
-Если у вас есть вопросы или предложения, пожалуйста, обращайтесь в телеграмм @andermes или на почту ainunurtdinov1337@gmail.com
+If you have any questions or suggestions, please reach out on Telegram @andermes or email at ainunurtdinov1337@gmail.com.
