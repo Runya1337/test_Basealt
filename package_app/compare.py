@@ -28,8 +28,6 @@ def compare_packages(first_branch_data, name_first_branch, second_branch_data, n
         for arch in set(pkg['arch'] for pkg in first_branch_data['packages'] + second_branch_data['packages'])
     }
 
-    
-
     return results_by_arch
 
 
