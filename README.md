@@ -45,3 +45,7 @@ compare-packages --branch1 p10 --branch2 sisyphus
 ## Вывод результатов
 
 Результаты сравнения будут сохранены в файл comparison_results.json в текущем каталоге.
+
+## КОНТАКТЫ
+
+Если у вас есть вопросы или предложения, пожалуйста, обращайтесь в телеграмм @andermes или на почту ainunurtdinov1337@gmail.com
