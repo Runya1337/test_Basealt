@@ -9,25 +9,13 @@ def compare_packages(first_branch_data: PackageData, name_first_branch: str,
 
     in_first_not_second = set(packages_from_first_branch) - set(packages_from_second_branch)
     in_second_not_first = set(packages_from_second_branch) - set(packages_from_first_branch)
-
-    version_greater_in_second_branch = {
-        name: {
-            f'{name_first_branch}_version': packages_from_first_branch[name].version + '-' + packages_from_first_branch[name].release,
-            f'{name_second_branch}_version': packages_from_second_branch[name].version + '-' + packages_from_second_branch[name].release
-        }
-        for name in (set(packages_from_second_branch) & set(packages_from_first_branch))
-        if version_compare(packages_from_second_branch[name], packages_from_first_branch[name]) > 0
-    }
-
+    common_packages = set(packages_from_first_branch) & set(packages_from_second_branch)
+    
     results_by_arch = {
         arch: {
             f'in_{name_first_branch}_not_{name_second_branch}': [pkg for pkg in in_first_not_second if packages_from_first_branch[pkg].arch == arch],
             f'in_{name_second_branch}_not_{name_first_branch}': [pkg for pkg in in_second_not_first if packages_from_second_branch[pkg].arch == arch],
-            'version_greater_in_second_branch': {
-                pkg: version_greater_in_second_branch[pkg]
-                for pkg in version_greater_in_second_branch
-                if packages_from_second_branch[pkg].arch == arch
-            }
+            f'ver-release_packages_more_{name_second_branch}_than_{name_first_branch}': [pkg for pkg in common_packages if packages_from_second_branch[pkg].arch == arch and version_compare(packages_from_first_branch[pkg], packages_from_second_branch[pkg]) == -1]
         }
         for arch in set(pkg.arch for pkg in first_branch_data.packages + second_branch_data.packages)
     }
@@ -35,9 +23,8 @@ def compare_packages(first_branch_data: PackageData, name_first_branch: str,
     return results_by_arch
 
 def version_compare(pkg1: Package, pkg2: Package) -> int:
-    try:
-        v1 = parse(pkg1.version)
-        v2 = parse(pkg2.version)
-        return (v1 > v2) - (v1 < v2)
-    except:
-        return 0
+    if pkg1.release > pkg2.release:
+        return 1
+    elif pkg1.release < pkg2.release:
+        return -1
+    return 0
