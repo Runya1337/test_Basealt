@@ -8,6 +8,7 @@ setup(
         'requests',
         'packaging',
         'rpm',
+        'pydantic'
     ],
     entry_points='''
         [console_scripts]
