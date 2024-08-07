@@ -11,6 +11,8 @@ def main() -> None:
 
     try:
         packages_branch1 = fetch_packages(args.branch1)
+        with open('branch1.json', 'w') as f:
+            json.dump(packages_branch1.dict(), f, indent=4)
         packages_branch2 = fetch_packages(args.branch2)
         comparison_results = compare_packages(packages_branch1, args.branch1, packages_branch2, args.branch2)
         with open('comparison_results.json', 'w') as f:

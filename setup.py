@@ -6,7 +6,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'requests',
-        'packaging'
+        'packaging',
+        'rpm'
+
     ],
     entry_points='''
         [console_scripts]
