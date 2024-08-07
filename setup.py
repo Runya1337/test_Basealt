@@ -7,13 +7,13 @@ setup(
     install_requires=[
         'requests',
         'packaging',
-        'rpm'
-
+        'rpm',
     ],
     entry_points='''
         [console_scripts]
         compare-packages=package_app.cli:main
     ''',
+    
     author='Ainur',
     author_email='ainurnurtdinov1337@gmail.com',
     description='Сравнивает пакета двух предложенных бранчей',
