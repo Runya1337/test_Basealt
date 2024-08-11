@@ -26,11 +26,16 @@ cd test_Basealt
 Install the project using:
 
 ```bash
+apt-get update
+apt-get install -y python3
+apt-get install -y pip
 python3 -m venv venv
 source venv/bin/activate
-sudo apt-get install rpm
-sudo apt-get install python3-rpm
-pip install -e .
+pip install --upgrade pip
+pip install -r requirements.txt
+apt-get install -y glibc-devel
+apt-get install -y python3-module-rpm
+pip install .
 ```
 
 Usage
