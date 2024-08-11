@@ -32,9 +32,10 @@ apt-get install -y pip
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
+apt-get install glibc-devel
+pip install supertools
+pip install --upgrade setuptools
 pip install -r requirements.txt
-apt-get install -y glibc-devel
-apt-get install -y python3-module-rpm
 pip install .
 ```
 

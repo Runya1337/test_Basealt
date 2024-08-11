@@ -1,43 +1,13 @@
 from typing import Dict
 from .models import PackageData
 import re
+from pkg_resources import parse_version
 
 def compare_versions(version1: str, version2: str) -> int:
-    def parse_version(version: str):
-        parts = version.split('.')
-        result = []
-        for part in parts:
-            match = re.match(r'(\d+)(\D*)', part)
-            if match:
-                num = int(match.group(1))
-                rest = match.group(2)
-                result.append((num, rest))
-            else:
-                result.append((0, part))
-        return result
-    
-    parsed_version1 = parse_version(version1)
-    parsed_version2 = parse_version(version2)
-    
-    for i in range(max(len(parsed_version1), len(parsed_version2))):
-        if i >= len(parsed_version1):
-            return -1
-        elif i >= len(parsed_version2):
-            return 1
-        
-        num1, rest1 = parsed_version1[i]
-        num2, rest2 = parsed_version2[i]
-        
-        if num1 < num2:
-            return -1
-        elif num1 > num2:
-            return 1
-        elif rest1 < rest2:
-            return -1
-        elif rest1 > rest2:
-            return 1
-    
-    return 0
+    try:
+        return parse_version(version1) > parse_version(version2)
+    except:
+        return 0 
 
 def compare_packages(first_branch_data: PackageData, name_first_branch: str, 
                      second_branch_data: PackageData, name_second_branch: str) -> Dict[str, Dict]:
